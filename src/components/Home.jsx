@@ -1,4 +1,5 @@
 import ProductCard from './Card'
+import NavBar from './NavBar';
 
 function Home() {
     const demoProduct = {
@@ -13,23 +14,34 @@ function Home() {
     };
 
     return (
-        <div className="container py-5">
-            <div className="row">
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-                <ProductCard product={demoProduct} />
-            </div>
-        </div>
 
+
+        <main>
+            <div>
+
+                <NavBar />
+            </div>
+
+            <div className="container py-5">
+                <h1>Flash Sale!</h1>
+                <div className="row">
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                    <ProductCard product={demoProduct} />
+                </div>
+            </div>
+
+
+        </main>
     );
 }
 

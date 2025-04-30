@@ -9,7 +9,7 @@ import Home from './components/Home';
 const App = () => {
   return (
 
-   
+    <>
 
       <Router>
         <Routes>
@@ -21,6 +21,9 @@ const App = () => {
         </Routes>
       </Router>
 
+
+
+    </>
 
   );
 };

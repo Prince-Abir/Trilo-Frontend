@@ -155,109 +155,129 @@ const ProfessionalRegister = () => {
                       <p className="text-muted">Create a new account</p>
                     </div>
 
-                    <form onSubmit={handleSubmit}>
-                      <div className="mb-3">
-                        <label className="form-label">
-                          <FaUser className="me-2" /> Name
-                        </label>
-                        <input
-                          type="text"
-                          className={`form-control ${errors.userName ? 'is-invalid' : ''}`}
-                          name="userName"
-                          value={formData.userName}
-                          onChange={handleChange}
-                          placeholder="Enter your name"
-                        />
-                        {errors.userName && <div className="invalid-feedback d-block">{errors.userName}</div>}
+                    <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+                      <div className="row">
+                        {/* Name Field */}
+                        <div className="col-md-6 mb-3">
+                          <label className="form-label fw-medium d-flex align-items-center">
+                            <FaUser className="me-2 text-primary" />
+                            Full Name
+                          </label>
+                          <input
+                            type="text"
+                            className={`form-control rounded-3 ${errors.userName ? 'is-invalid' : ''}`}
+                            name="userName"
+                            value={formData.userName}
+                            onChange={handleChange}
+                            placeholder="Rakib Khan"
+                          />
+                          {errors.userName && <div className="invalid-feedback">{errors.userName}</div>}
+                        </div>
+
+                        {/* Email Field */}
+                        <div className="col-md-6 mb-3">
+                          <label className="form-label fw-medium d-flex align-items-center">
+                            <FaEnvelope className="me-2 text-primary" />
+                            Email Address
+                          </label>
+                          <input
+                            type="email"
+                            className={`form-control rounded-3 ${errors.userEmail ? 'is-invalid' : ''}`}
+                            name="userEmail"
+                            value={formData.userEmail}
+                            onChange={handleChange}
+                            placeholder="rakib@example.com"
+                          />
+                          {errors.userEmail && <div className="invalid-feedback">{errors.userEmail}</div>}
+                        </div>
                       </div>
 
-                      <div className="mb-3">
-                        <label className="form-label">
-                          <FaEnvelope className="me-2" /> Email Address
-                        </label>
-                        <input
-                          type="email"
-                          className={`form-control ${errors.userEmail ? 'is-invalid' : ''}`}
-                          name="userEmail"
-                          value={formData.userEmail}
-                          onChange={handleChange}
-                          placeholder="Enter your email"
-                        />
-                        {errors.userEmail && <div className="invalid-feedback d-block">{errors.userEmail}</div>}
+                      <div className="row">
+                        {/* Password Field */}
+                        <div className="col-md-6 mb-3">
+                          <label className="form-label fw-medium d-flex align-items-center">
+                            <FaLock className="me-2 text-primary" />
+                            Password
+                          </label>
+                          <input
+                            type="password"
+                            className={`form-control rounded-3 ${errors.userPassword ? 'is-invalid' : ''}`}
+                            name="userPassword"
+                            value={formData.userPassword}
+                            onChange={handleChange}
+                            placeholder=""
+                          />
+                          {errors.userPassword && <div className="invalid-feedback">{errors.userPassword}</div>}
+                        </div>
+
+                        {/* Confirm Password Field */}
+                        <div className="col-md-6 mb-3">
+                          <label className="form-label fw-medium d-flex align-items-center">
+                            <FaLock className="me-2 text-primary" />
+                            Confirm Password
+                          </label>
+                          <input
+                            type="password"
+                            className={`form-control rounded-3 ${errors.confirmPassword ? 'is-invalid' : ''}`}
+                            name="confirmPassword"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            placeholder=""
+                          />
+                          {errors.confirmPassword && <div className="invalid-feedback">{errors.confirmPassword}</div>}
+                        </div>
                       </div>
 
-                      <div className="mb-3">
-                        <label className="form-label">
-                          <FaLock className="me-2" /> Password
-                        </label>
-                        <input
-                          type="password"
-                          className={`form-control ${errors.userPassword ? 'is-invalid' : ''}`}
-                          name="userPassword"
-                          value={formData.userPassword}
-                          onChange={handleChange}
-                          placeholder="Enter your password"
-                        />
-                        {errors.userPassword && <div className="invalid-feedback d-block">{errors.userPassword}</div>}
+                      <div className="row">
+                        {/* Phone Field */}
+                        <div className="col-md-6 mb-3">
+                          <label className="form-label fw-medium d-flex align-items-center">
+                            <FaPhoneAlt className="me-2 text-primary" />
+                            Phone Number
+                          </label>
+                          <input
+                            type="text"
+                            className={`form-control rounded-3 ${errors.userPhone ? 'is-invalid' : ''}`}
+                            name="userPhone"
+                            value={formData.userPhone}
+                            onChange={handleChange}
+                            placeholder="018********"
+                          />
+                          {errors.userPhone && <div className="invalid-feedback">{errors.userPhone}</div>}
+                        </div>
+
+                        {/* Role Field */}
+                        <div className="col-md-6 mb-3">
+                          <label className="form-label fw-medium">Role</label>
+                          <select
+                            className={`form-select rounded-3 ${errors.userRole ? 'is-invalid' : ''}`}
+                            name="userRole"
+                            value={formData.userRole}
+                            onChange={handleChange}
+                          >
+                            <option value="">Select your role</option>
+                            <option value="ADMIN">Admin</option>
+                            <option value="USER">User</option>
+                          </select>
+                          {errors.userRole && <div className="invalid-feedback">{errors.userRole}</div>}
+                        </div>
                       </div>
 
-                      <div className="mb-3">
-                        <label className="form-label">
-                          <FaLock className="me-2" /> Confirm Password
-                        </label>
-                        <input
-                          type="password"
-                          className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
-                          name="confirmPassword"
-                          value={formData.confirmPassword}
-                          onChange={handleChange}
-                          placeholder="Confirm your password"
-                        />
-                        {errors.confirmPassword && <div className="invalid-feedback d-block">{errors.confirmPassword}</div>}
-                      </div>
-
-                      <div className="mb-3">
-                        <label className="form-label">
-                          <FaPhoneAlt className="me-2" /> Phone Number
-                        </label>
-                        <input
-                          type="text"
-                          className={`form-control ${errors.userPhone ? 'is-invalid' : ''}`}
-                          name="userPhone"
-                          value={formData.userPhone}
-                          onChange={handleChange}
-                          placeholder="Enter your phone number"
-                        />
-                        {errors.userPhone && <div className="invalid-feedback d-block">{errors.userPhone}</div>}
-                      </div>
-
-                      <div className="mb-3">
-                        <label className="form-label">Address</label>
+                      {/* Address Field */}
+                      <div className="mb-4">
+                        <label className="form-label fw-medium">Address</label>
                         <textarea
-                          className={`form-control ${errors.userAddress ? 'is-invalid' : ''}`}
+                          className={`form-control rounded-3 ${errors.userAddress ? 'is-invalid' : ''}`}
                           name="userAddress"
                           value={formData.userAddress}
                           onChange={handleChange}
-                          placeholder="Enter your address"
+                          placeholder="House 32 7/A, Dhanmodhi, Dhaka"
+                          rows="3"
                         />
-                        {errors.userAddress && <div className="invalid-feedback d-block">{errors.userAddress}</div>}
+                        {errors.userAddress && <div className="invalid-feedback">{errors.userAddress}</div>}
                       </div>
 
-                      <div className="mb-3">
-                        <label className="form-label">Role</label>
-                        <select
-                          className={`form-select ${errors.userRole ? 'is-invalid' : ''}`}
-                          name="userRole"
-                          value={formData.userRole}
-                          onChange={handleChange}
-                        >
-                          <option value="">Select your role</option>
-                          <option value="ADMIN">ADMIN</option>
-                          <option value="USER">USER</option>
-                        </select>
-                        {errors.userRole && <div className="invalid-feedback d-block">{errors.userRole}</div>}
-                      </div>
-
+                      {/* Submit Button */}
                       <button
                         type="submit"
                         className="btn btn-primary w-100 py-2"

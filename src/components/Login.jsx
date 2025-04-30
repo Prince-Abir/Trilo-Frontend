@@ -1,8 +1,7 @@
-// Your same login code (No design change)
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaGoogle, FaFacebookF, FaTwitter } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import triloBackground from '../assets/trilo.png';
 
@@ -57,13 +56,12 @@ const ProfessionalLogin = () => {
     try {
       const response = await axios.post('http://localhost:3307/trilo/login', formData);
       console.log(response.data);
-      
+
       if (response.data) {
-        // If login is successful, navigate to the Home page
         alert('✅ Login successful!');
         navigate('/home');
       }
-      else{
+      else {
         alert('❌ Login failed');
       }
     } catch (error) {
@@ -80,24 +78,25 @@ const ProfessionalLogin = () => {
       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       display: 'flex',
       alignItems: 'center',
-      padding: '20px 0'
+      padding: '20px'
     }}>
-      <div className="container" style={{ maxWidth: '1200px' }}>
+      <div className="container" style={{ maxWidth: '1000px' }}>
         <div className="row justify-content-center m-0">
           <div className="col-12 p-0">
             <div className="card shadow-lg" style={{
               borderRadius: '1rem',
               overflow: 'hidden',
-              border: 'none'
+              border: 'none',
+              maxHeight: '90vh' // Prevents card from being taller than viewport
             }}>
-              <div className="row g-0" style={{ minHeight: '600px' }}>
-                
-                <div className="col-md-5 d-none d-md-flex" style={{
+              <div className="row g-0" style={{ height: '100%' }}> {/* Changed min-height to height */}
+
+                {/* Left Side - Image */}
+                <div className="col-md-5 d-none d-md-flex position-relative" style={{
                   backgroundImage: `url(${triloBackground})`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  position: 'relative'
+                  minHeight: '400px' // Fixed height for image section
                 }}>
                   <div style={{
                     position: 'absolute',
@@ -118,45 +117,60 @@ const ProfessionalLogin = () => {
                     <p style={{ fontSize: '1rem' }}>We're glad to see you again</p>
                   </div>
                 </div>
-                
+
+
+                {/* Right Side - Form */}
                 <div className="col-md-7 d-flex align-items-center">
-                  <div className="card-body p-4 p-md-5" style={{ overflowY: 'auto', maxHeight: '600px' }}>
-                    <div className="text-center mb-4">
-                      <h2 className="fw-bold" style={{ color: '#764ba2', fontSize: '1.8rem' }}>Login</h2>
-                      <p className="text-muted">Sign in to continue to your account</p>
+                  <div className="card-body p-4 p-lg-5">
+                    <div className="text-center mb-2">
+                      <h2 className="fw-bold mb-2" style={{ color: '#764ba2' }}>Login to Your Account</h2>
+                      <p className="text-muted">Enter your credentials to access your dashboard</p>
                     </div>
-                    
-                    <form onSubmit={handleSubmit}>
-                      <div className="mb-3">
-                        <label className="form-label">
-                          <FaEnvelope className="me-2" /> Email Address
+
+                    <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+                      {/* Email Field */}
+                      <div className="mb-4">
+                        <label htmlFor="userEmail" className="form-label fw-medium d-flex align-items-center">
+                          <FaEnvelope className="me-2" style={{ color: '#667eea' }} />
+                          Email Address
                         </label>
-                        <input
-                          type="email"
-                          className={`form-control ${errors.userEmail ? 'is-invalid' : ''}`}
-                          name="userEmail"
-                          value={formData.userEmail}
-                          onChange={handleChange}
-                          placeholder="Enter your email"
-                        />
-                        {errors.userEmail && <div className="invalid-feedback d-block">{errors.userEmail}</div>}
+                        <div className="input-group">
+                          <input
+                            type="email"
+                            id="userEmail"
+                            className={`form-control rounded-3 ${errors.userEmail ? 'is-invalid' : ''}`}
+                            name="userEmail"
+                            value={formData.userEmail}
+                            onChange={handleChange}
+                            placeholder="your@email.com"
+                            required
+                          />
+                        </div>
+                        {errors.userEmail && <div className="invalid-feedback d-block mt-1">{errors.userEmail}</div>}
                       </div>
-                      
-                      <div className="mb-3">
-                        <label className="form-label">
-                          <FaLock className="me-2" /> Password
+
+                      {/* Password Field */}
+                      <div className="mb-4">
+                        <label htmlFor="userPassword" className="form-label fw-medium d-flex align-items-center">
+                          <FaLock className="me-2" style={{ color: '#667eea' }} />
+                          Password
                         </label>
-                        <input
-                          type="password"
-                          className={`form-control ${errors.userPassword ? 'is-invalid' : ''}`}
-                          name="userPassword"
-                          value={formData.userPassword}
-                          onChange={handleChange}
-                          placeholder="Enter your password"
-                        />
-                        {errors.userPassword && <div className="invalid-feedback d-block">{errors.userPassword}</div>}
+                        <div className="input-group">
+                          <input
+                            type="password"
+                            id="userPassword"
+                            className={`form-control rounded-3 ${errors.userPassword ? 'is-invalid' : ''}`}
+                            name="userPassword"
+                            value={formData.userPassword}
+                            onChange={handleChange}
+                            placeholder=""
+                            required
+                          />
+                        </div>
+                        {errors.userPassword && <div className="invalid-feedback d-block mt-1">{errors.userPassword}</div>}
                       </div>
-                      
+
+                      {/* Remember Me & Forgot Password */}
                       <div className="d-flex justify-content-between align-items-center mb-4">
                         <div className="form-check">
                           <input
@@ -164,15 +178,15 @@ const ProfessionalLogin = () => {
                             className="form-check-input"
                             id="rememberMe"
                           />
-                          <label className="form-check-label" htmlFor="rememberMe">
+                          <label className="form-check-label small" htmlFor="rememberMe">
                             Remember me
                           </label>
                         </div>
-                        <Link to="/forgot-password" style={{ color: '#764ba2', textDecoration: 'none' }}>
+                        <Link to="/forgot-password" className="small text-decoration-none" style={{ color: '#667eea' }}>
                           Forgot password?
                         </Link>
                       </div>
-                      
+
                       <button
                         type="submit"
                         className="btn btn-primary w-100 py-2"
@@ -194,8 +208,8 @@ const ProfessionalLogin = () => {
                         )}
                       </button>
                     </form>
-                    
-                    <div className="text-center mt-4">
+
+                    <div className="text-center">
                       <p className="text-muted" style={{ fontSize: '0.9rem' }}>
                         Don't have an account?{' '}
                         <Link to="/register" style={{ color: '#764ba2', fontWeight: '500', textDecoration: 'none' }}>
@@ -203,27 +217,27 @@ const ProfessionalLogin = () => {
                         </Link>
                       </p>
                     </div>
-                    
-                    <div className="text-center mt-4">
-                      <div className="divider mb-3">
+
+                    <div className="text-center">
+                      <div className="divider mb-2">
                         <span className="text-muted">Or login with</span>
                       </div>
                       <div className="d-flex justify-content-center gap-3">
-                        <button className="btn btn-outline-primary rounded-circle p-2">
-                          <i className="fab fa-google"></i>
+                        <button className="btn btn-outline-primary rounded-circle h-10 w-10">
+                          <FaGoogle />
                         </button>
-                        <button className="btn btn-outline-primary rounded-circle p-2">
-                          <i className="fab fa-facebook-f"></i>
+                        <button className="btn btn-outline-primary rounded-circle h-10 w-10">
+                          <FaFacebookF />
                         </button>
-                        <button className="btn btn-outline-primary rounded-circle p-2">
-                          <i className="fab fa-twitter"></i>
+                        <button className="btn btn-outline-primary rounded-circle h-10 w-10">
+                          <FaTwitter />
                         </button>
                       </div>
                     </div>
-                    
+
                   </div>
                 </div>
-              
+
               </div>
             </div>
           </div>
