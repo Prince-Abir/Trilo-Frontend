@@ -1,12 +1,23 @@
-# React + Vite
+# React + Vite ( Trilo Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+1. Trilo Signup Page
+   
+![trilo signup](https://github.com/user-attachments/assets/ab0b9caf-ee9c-415d-bf7a-2d34a7d4e39b)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+2. Registered Users in MYSQL Database
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![trilo db](https://github.com/user-attachments/assets/2d5f8eda-5503-4bee-8039-f4061ebb17d3)
+
+
+3. Trilo login Authentication
+   
+![trilo login](https://github.com/user-attachments/assets/e047f612-1fb5-445e-8fcc-a4a27be7b338)
+
+
+4. Trilo Home
+   
+![trilo home](https://github.com/user-attachments/assets/4ac397c4-18ac-4d1a-90da-733fd184e44e)
+
+
